@@ -9,59 +9,64 @@ class GildedRose {
   }
 
   public void updateQuality() {
-    final String agedBrie = "Aged Brie";
-    final String backstage = "Backstage passes to a TAFKAL80ETC concert";
-    final String sulfuras = "Sulfuras, Hand of Ragnaros";
+  		/* Le switch permet une meilleur compréhension en fonction des noms d'items, de plus nous n'avons pas de répétition */
+    switch (item.name) {
+      case "Sulfuras, Hand of Ragnaros":
+ 			  return; // Comme sulfuras ne change pas de qualité alors je vais quitter la fonction pour eviter tout problèmes
+        break;
+      case "Aged Brie":
+        updateBrie(); // Je propose de remplacer chaque action sur l'item par une méthode simple pour éviter la redondance
+        break;
+      case "Backstage passes to a TAFKAL80ETC concert":
+        updateBackstage();
+        break;
+      default:
+        reduceQuality();
+        if (item.sellIn < 0) {
+          reduceQuality();
+        } 
+        break;
+    }
+    /* Comme le sellin diminue à chaque fois alors on le fait pour tous */
+    item.sellIn = item.sellIn - 1;
+  }
 
-    for (int i = 0; i < items.length; i++) {
-      if (!items[i].name.equals(agedBrie)
-          && !items[i].name.equals(backstage)) {
-        if (items[i].quality > 0) {
-          if (!items[i].name.equals(sulfuras)) {
-            items[i].quality = items[i].quality - 1;
-          }
-        }
-      } else {
-        if (items[i].quality < 50) {
-          items[i].quality = items[i].quality + 1;
 
-          if (items[i].name.equals(backstage)) {
-            if (items[i].sellIn < 11) {
-              if (items[i].quality < 50) {
-                items[i].quality = items[i].quality + 1;
-              }
-            }
+  public void updateBrie() {
+  	addQuality();
+    if (item.sellIn < 0) {
+      addQuality();
+    }
+  }
 
-            if (items[i].sellIn < 6) {
-              if (items[i].quality < 50) {
-                items[i].quality = items[i].quality + 1;
-              }
-            }
-          }
-        }
-      }
+  public void updateBackstage() {
+  	addQuality();
+    if (item.sellIn < 10) {
+      addQuality();
+    }
+    if (item.sellIn < 5) {
+      addQuality();
+    }
+    if (item.sellIn < 0) {
+      item.quality = item.quality - item.quality;
+    }
+  }
 
-      if (!items[i].name.equals(sulfuras)) {
-        items[i].sellIn = items[i].sellIn - 1;
-      }
 
-      if (items[i].sellIn < 0) {
-        if (!items[i].name.equals(agedBrie)) {
-          if (!items[i].name.equals(backstage)) {
-            if (items[i].quality > 0) {
-              if (!items[i].name.equals(sulfuras)) {
-                items[i].quality = items[i].quality - 1;
-              }
-            }
-          } else {
-            items[i].quality = items[i].quality - items[i].quality;
-          }
-        } else {
-          if (items[i].quality < 50) {
-            items[i].quality = items[i].quality + 1;
-          }
-        }
-      }
+  /* 
+   	 Ces methodes vont permettre de reduire la redondance des conditions sur la qualité 
+     tout en respectant les prérequis (Si c'est supérieur à 50 ou si c'est négatif)
+  */
+
+  public void addQuality() {
+    if (item.quality < 50) {
+      item.quality++;
+    }
+  }
+
+  public void reduceQuality() {
+    if (item.quality > 0) {
+      item.quality--;
     }
   }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+    version="6.23.0" timestamp="2020-10-06T16:21:45.644">
+<file name="/home/local.isima.fr/lorigault/Documents/genielog/GildedRose/src/test/java/com/gildedrose/GildedRoseTest.java">
+<violation beginline="38" endline="38" begincolumn="46" endcolumn="56" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="com.gildedrose" class="GildedRoseTest" method="qualityAgedBrie" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal &quot;Aged Brie&quot; appears 15 times in this file; the first occurrence is on line 38
+</violation>
+<violation beginline="93" endline="93" begincolumn="46" endcolumn="88" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="com.gildedrose" class="GildedRoseTest" method="qualityBackstageAboveTen" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal &quot;Backstage passes to a TAFKAL80ETC concert&quot; appears 15 times in this file; the first occurrence is on line 93
+</violation>
+<violation beginline="148" endline="148" begincolumn="46" endcolumn="73" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="com.gildedrose" class="GildedRoseTest" method="qualitySulfuras" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal &quot;Sulfuras, Hand of Ragnaros&quot; appears 12 times in this file; the first occurrence is on line 148
+</violation>
+<violation beginline="193" endline="193" begincolumn="46" endcolumn="59" rule="AvoidDuplicateLiterals" ruleset="Error Prone" package="com.gildedrose" class="GildedRoseTest" method="qualityItemSellInZero" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#avoidduplicateliterals" priority="3">
+The String literal &quot;Diamond Boot&quot; appears 12 times in this file; the first occurrence is on line 193
+</violation>
+<violation beginline="603" endline="603" begincolumn="46" endcolumn="46" rule="EmptyStatementNotInLoop" ruleset="Error Prone" package="com.gildedrose" class="GildedRoseTest" method="NameSulfurasQualityZero" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#emptystatementnotinloop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+</file>
+<file name="/home/local.isima.fr/lorigault/Documents/genielog/GildedRose/src/test/java/com/gildedrose/TexttestFixture.java">
+<violation beginline="19" endline="35" begincolumn="20" endcolumn="46" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.gildedrose" class="TexttestFixture" method="main" variable="app" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'app' (lines '19'-'35').
+</violation>
+<violation beginline="21" endline="23" begincolumn="13" endcolumn="48" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="com.gildedrose" class="TexttestFixture" method="main" variable="days" externalInfoUrl="https://pmd.github.io/pmd-6.23.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'days' (lines '21'-'23').
+</violation>
+</file>
+</pmd>

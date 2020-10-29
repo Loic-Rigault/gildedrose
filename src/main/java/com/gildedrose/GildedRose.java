@@ -8,46 +8,53 @@ class GildedRose {
 
   }
 
+
+
   public void updateQuality() {
+
+    for(Item item : items){
+      /*Si on a sulfuras alors on change rien car il ne perd pas en qualité */
+      if(item.name == "Sulfuras, Hand of Ragnaros"){
+	return;
+	}
   		/* Le switch permet une meilleur compréhension en fonction des noms d'items, de plus nous n'avons pas de répétition */
-    switch (item.name) {
-      case "Sulfuras, Hand of Ragnaros":
- 			  return; // Comme sulfuras ne change pas de qualité alors je vais quitter la fonction pour eviter tout problèmes
+      switch (item.name) {
+        case "Aged Brie":
+          updateBrie(item); // Je propose de remplacer chaque action sur l'item par une méthode simple pour éviter la redondance
         break;
-      case "Aged Brie":
-        updateBrie(); // Je propose de remplacer chaque action sur l'item par une méthode simple pour éviter la redondance
+        case "Backstage passes to a TAFKAL80ETC concert":
+          updateBackstage(item);
         break;
-      case "Backstage passes to a TAFKAL80ETC concert":
-        updateBackstage();
+        default:
+          reduceQuality(item);
+          if (item.sellIn <= 0) {
+            reduceQuality(item);
+          } 
         break;
-      default:
-        reduceQuality();
-        if (item.sellIn < 0) {
-          reduceQuality();
-        } 
-        break;
-    }
+      }
+    
     /* Comme le sellin diminue à chaque fois alors on le fait pour tous */
     item.sellIn = item.sellIn - 1;
-  }
+    
+    }
+  }  
 
-
-  public void updateBrie() {
-  	addQuality();
-    if (item.sellIn < 0) {
-      addQuality();
+  public void updateBrie(Item item) {
+  	addQuality(item);
+    if (item.sellIn <= 0) {
+      addQuality(item);
     }
   }
 
-  public void updateBackstage() {
-  	addQuality();
-    if (item.sellIn < 10) {
-      addQuality();
+  public void updateBackstage(Item item) {
+  	addQuality(item);
+    if (item.sellIn <= 10) {
+      addQuality(item);
     }
-    if (item.sellIn < 5) {
-      addQuality();
+    if (item.sellIn <= 5) {
+      addQuality(item);
     }
-    if (item.sellIn < 0) {
+    if (item.sellIn <= 0) {
       item.quality = item.quality - item.quality;
     }
   }
@@ -58,13 +65,13 @@ class GildedRose {
      tout en respectant les prérequis (Si c'est supérieur à 50 ou si c'est négatif)
   */
 
-  public void addQuality() {
+  public void addQuality(Item item) {
     if (item.quality < 50) {
       item.quality++;
     }
   }
 
-  public void reduceQuality() {
+  public void reduceQuality(Item item) {
     if (item.quality > 0) {
       item.quality--;
     }

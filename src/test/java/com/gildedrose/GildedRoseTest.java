@@ -22,12 +22,6 @@ class GildedRoseTest {
         assertThat(app.items[0].name, is("foo"));
     }
 
-    	//Test du tostring
-    @Test
-    void testToString() {
-        Item[] items = new Item[] { new Item("test", 0, 0) };
-        assertThat(items.toString(), is("test, 0, 0"));
-    }
 
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
@@ -196,7 +190,7 @@ class GildedRoseTest {
     void qualityItemSellInZero() {
         int qual = 10;
 	int sell = 0;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].quality, is(qual-2));
@@ -207,7 +201,7 @@ class GildedRoseTest {
     void qualityItem() {
         int qual = 5;
 	int sell = 9;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].quality, is(qual-1));
@@ -218,7 +212,7 @@ class GildedRoseTest {
     void qualityItemQualityZero() {
         int qual = 0;
 	int sell = 9;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].quality, is(qual));
@@ -229,13 +223,32 @@ class GildedRoseTest {
     void qualityItemZero() {
         int qual = 0;
 	int sell = 0;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].quality, is(qual));
 
     }
 
+    @Test
+    void qualityConjured() {
+        int qual = 20;
+	int sell = 10;
+	Item[] items = new Item[] { new Item("Conjured Mana Cake", sell, qual) };
+	GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertThat(app.items[0].quality, is(qual-2));
+    }
+
+    @Test
+    void qualityConjuredZero() {
+        int qual = 20;
+	int sell = 0;
+	Item[] items = new Item[] { new Item("Conjured Mana Cake", sell, qual) };
+	GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertThat(app.items[0].quality, is(qual-4));
+    }
 
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
@@ -405,7 +418,7 @@ class GildedRoseTest {
     void sellInItemSellInZero() {
         int qual = 10;
 	int sell = 0;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].sellIn, is(sell-1));
@@ -416,7 +429,7 @@ class GildedRoseTest {
     void sellInItem() {
         int qual = 5;
 	int sell = 9;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].sellIn, is(sell-1));
@@ -427,7 +440,7 @@ class GildedRoseTest {
     void sellInItemQualityZero() {
         int qual = 0;
 	int sell = 9;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].sellIn, is(sell-1));
@@ -438,14 +451,22 @@ class GildedRoseTest {
     void sellInItemZero() {
         int qual = 0;
 	int sell = 0;
-	Item[] items = new Item[] { new Item("Diamond Boot", sell, qual) };
+	Item[] items = new Item[] { new Item("+5 Dexterity Vest", sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertThat(app.items[0].sellIn, is(sell-1));
 
     }
 
-
+    @Test
+    void sellInConjured(){
+        int qual = 40;
+	int sell = 10;
+	Item[] items = new Item[] { new Item("Conjured Mana Cake", sell, qual) };
+	GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertThat(app.items[0].sellIn, is(sell-1));
+    }
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 //                    Tests unitaires sur le nom                              //
@@ -639,7 +660,7 @@ class GildedRoseTest {
     void NameItem() {
         int qual = 5;
 	int sell = 9;
-	String n = "Diamond Boot";
+	String n = "+5 Dexterity Vest";
 	Item[] items = new Item[] { new Item(n, sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -651,7 +672,7 @@ class GildedRoseTest {
     void NameItemQualityZero() {
         int qual = 0;
 	int sell = 9;
-	String n = "Diamond Boot";
+	String n = "+5 Dexterity Vest";
 	Item[] items = new Item[] { new Item(n, sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -663,7 +684,7 @@ class GildedRoseTest {
     void NameItemZero() {
         int qual = 0;
 	int sell = 0;
-	String n = "Diamond Boot";
+	String n = "+5 Dexterity Vest";
 	Item[] items = new Item[] { new Item(n, sell, qual) };
 	GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -672,9 +693,3 @@ class GildedRoseTest {
     }
 
 }
-//////////////////////////////////////////////////
-//                                              //
-//               Fin des tests                  //
-//                                              //
-//////////////////////////////////////////////////
-

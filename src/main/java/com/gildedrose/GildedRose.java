@@ -6,13 +6,12 @@ class GildedRose {
   private static final int TIME_BACKSTAGE_FIVE = 5;
   private static final int TIME_BACKSTAGE_TEN = 10;
 
+//Private ?
   Item[] items;
 
   public GildedRose(Item[] items) {
     this.items = items;
   }
-
-
 
   public void updateQuality() {
 
@@ -28,6 +27,9 @@ class GildedRose {
           break;
         case "Backstage passes to a TAFKAL80ETC concert":
           updateBackstage(item);
+          break;
+        case "Conjured Mana Cake":
+          updateConjured(item);
           break;
         default:
           reduceQuality(item);
@@ -61,6 +63,14 @@ class GildedRose {
     }
   }
 
+  public void updateConjured(Item item) {
+    reduceQuality(item);
+    reduceQuality(item);
+    if (item.sellIn <= 0) {
+      reduceQuality(item);
+      reduceQuality(item);
+    }
+  }
 
 /* Ces methodes vont permettre de reduire la redondance
 des conditions sur la qualité tout en respectant les prérequis.

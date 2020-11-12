@@ -1,5 +1,10 @@
 package com.gildedrose;
 
+/** 
+* 
+* @author Rigault Loïc
+*/
+
 class GildedRose {
 
   private static final int MAX_QUALITY = 50;
@@ -43,6 +48,9 @@ class GildedRose {
     }
   }
 
+  /**
+  * @param item
+  */
   public void updateBrie(Item item) {
     addQuality(item);
     if (item.sellIn <= 0) {
@@ -50,6 +58,9 @@ class GildedRose {
     }
   }
 
+  /**
+  * @param item
+  */
   public void updateBackstage(Item item) {
     addQuality(item);
     if (item.sellIn <= TIME_BACKSTAGE_TEN) {
@@ -63,6 +74,9 @@ class GildedRose {
     }
   }
 
+  /**
+  * @param item
+  */
   public void updateConjured(Item item) {
     reduceQuality(item);
     reduceQuality(item);
@@ -76,12 +90,18 @@ class GildedRose {
 des conditions sur la qualité tout en respectant les prérequis.
 (Si c'est supérieur à 50 ou si c'est négatif) */
 
+  /**
+  * @param item
+  */
   public void addQuality(Item item) {
     if (item.quality < MAX_QUALITY) {
       item.quality++;
     }
   }
 
+  /**
+  * @param item
+  */
   public void reduceQuality(Item item) {
     if (item.quality > 0) {
       item.quality--;
